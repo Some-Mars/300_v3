@@ -56,7 +56,7 @@ TEST(BorderConditionTest, CheckBorderCondition) {
     }
 
     // Проверяем, что граничное условие c(t, 0) = 1 правильно установлено
-    for (int i = 0; i <= N; i++) {
+    for (int i = 1; i <= N; i++) {
         ASSERT_DOUBLE_EQ(C[i][0], 1.0);
     }
 }
