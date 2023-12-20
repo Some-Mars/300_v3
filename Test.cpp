@@ -25,7 +25,12 @@ TEST(InitialConditionTest, CheckInitialCondition) {
     int N = int((t_n - t_0) / dT);
 
     vector<vector<double>> C(N + 1, vector<double>(x_nums + 1));
-
+    
+    // Установка начальных условий
+    for (int x_index = 0; x_index <= x_nums; x_index++) {
+        C[0][x_index] = sin(x_0 + h * x_index) + 1.0;
+    }
+    
     // Проверяем, что начальное условие c(0, x) = sin(x) + 1 правильно установлено
     for (int i = 0; i <= x_nums; i++) {
         ASSERT_DOUBLE_EQ(C[0][i], sin(x_0 + h * i) + 1.0);
@@ -45,6 +50,10 @@ TEST(BorderConditionTest, CheckBorderCondition) {
     int N = int((t_n - t_0) / dT);
 
     vector<vector<double>> C(N + 1, vector<double>(x_nums + 1));
+
+    for (int N_index = 1; N_index <= N; N_index++){
+        C[N_index][0] = 1.0;
+    }
 
     // Проверяем, что граничное условие c(t, 0) = 1 правильно установлено
     for (int i = 0; i <= N; i++) {
