@@ -89,24 +89,29 @@ TEST(RecurrenceRelationTest, CheckRecurrenceRelation) {
     double x_n = 1;
     double t_0 = 0;
     double t_n = 1;
-
+    
     int x_nums = int((x_n - x_0) / h);
     int N = int((t_n - t_0) / dT);
-
-    vector<vector<double>> C(N + 1, vector<double>(x_nums + 1));
-
-    // Инициализируем начальные условия
+    
+    vector<vector<double» C(N + 1, vector<double>(x_nums + 1));
+    
+    // Установка начальных условий
     for (int x_index = 0; x_index <= x_nums; x_index++) {
         C[0][x_index] = sin(x_0 + h * x_index) + 1.0;
-    }
-
-    // Запускаем рекуррентное соотношение
-    for (int n = 0; n < N; n++) {
-        for (int x_index = 1; x_index <= x_nums; x_index++) {
-            double result = recur(C, dT, h, n, x_index);
-            ASSERT_DOUBLE_EQ(C[n + 1][x_index], result);
+        for (int N_index = 1; N_index <= N; N_index++){
+            C[N_index][0] = 1.0;
         }
     }
+    
+    // Решение уравнения
+    for (int n = 0; n < N; n++) {
+        for (int x_index = 1; x_index <= x_nums; x_index++) {
+            C[n + 1][x_index] = recur(C, dT, h, n, x_index);
+        }
+    }
+    
+    // Запускаем рекуррентное соотношение
+    ASSERT_DOUBLE_EQ(C[2][4], 1.376);
 }
 
 int main(int argc, char **argv) {
