@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <unistd.h>
 
+using namespace std;
+
 // Подключаем функции из основного кода
 double recur(vector<vector<double>>& C, double dT, double h, int n, int j) {
     return C[n][j] - n * dT * dT * (C[n][j] - C[n][j - 1]) / h + 4 * (j - 1) * h * dT;
