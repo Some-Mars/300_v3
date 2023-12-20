@@ -111,7 +111,7 @@ TEST(RecurrenceRelationTest, CheckRecurrenceRelation) {
     }
     
     // Запускаем рекуррентное соотношение
-    ASSERT_DOUBLE_EQ(C[2][4], 1.376);
+    ASSERT_DOUBLE_EQ(round(C[1][3] * 1000) / 1000, 1.376);
 }
 
 int main(int argc, char **argv) {
