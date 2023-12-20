@@ -93,7 +93,7 @@ TEST(RecurrenceRelationTest, CheckRecurrenceRelation) {
     int x_nums = int((x_n - x_0) / h);
     int N = int((t_n - t_0) / dT);
     
-    vector<vector<double» C(N + 1, vector<double>(x_nums + 1));
+    vector<vector<double>> C(N + 1, vector<double>(x_nums + 1));
     
     // Установка начальных условий
     for (int x_index = 0; x_index <= x_nums; x_index++) {
